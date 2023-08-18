@@ -1,106 +1,70 @@
-# Detection and Prevention of DDoS attacks in VANETs
+# Getting Started with Create React App
 
-VANET transmission includes many types of data packets such as traffic conditions, distress signals (eg. accident, brake failure, etc), situation awareness, etc.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-They are vulnerable to cyber attacks, especially Distributed Denial of Service attack, where the attacker can compromise nodes inside the networks to occupy the resources and impact communication. 
+## Available Scripts
 
+In the project directory, you can run:
 
-### Install
+### `npm start`
 
-  This project requires python 3.9.15, and the following python libraries installed:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-   + ###### [Numpy](https://numpy.org/)
-   + ###### [Scapy](https://scapy.net/)
-   + ###### [Pandas](https://pandas.pydata.org/)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-  Also require the following softwares to be installed
-   
-   + ###### Git Core : 
-     ```sudo apt-get install git-core```
-     
-   + ###### Controller : [MiniNet](https://noxrepo.github.io/pox-doc/html/)
-     ```git clone git://github.com/mininet/mininet```
-     
-     ```sudo apt-get install mininet```
-     
-   + ###### Emulator : [POX](https://noxrepo.github.io/pox-doc/html/)
-     ```.../mininet/util/install.sh -p```
+### `npm test`
 
-### Code
-   * Copy the *l3_ddosMitigationFinal1.py* and *detectionUsingEntropy.py* files in *.../pox/pox/forwarding/* folder. 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-   * Copy the *trained_model.joblib , entropy_model.joblib* file in *.../pox/* folder. 
-  
-   You will also be required to use the *flooding.py* , *traffic.py* and *attack.py* Python files for generating flooding, traffic and attack packets respectively . The file *detectionUsingEntropy.py* is used to calculate the entropy. 
- 
+### `npm run build`
 
-### Run
-  #### Step 1: Network setup and Traffic Generation(Done for data which is not necessary now )
-  * #### Terminal 1 : Starting the POX Controller
-      Open the terminal and start the POX controller with modified l3_learning component (l3_ddosMitigationFinal1.py) which is used to run the POX's learning switch. Additional functions such as Statisic collection, Entropy computation and Machine Learning classifier, are added here
-     
-     ``` $ cd pox ```
-     
-     ``` $ sudo python3 pox.py forwarding.l3_ddosMitigationFinal1  ```
-   
-  * #### Terminal 2 : Building Network Topology
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-     Open another tab of terminal and run
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-     ``` $ sudo mn --switch ovs --topo tree,depth=2,fanout=8 --controller=remote,ip=127.0.0.1 ```
-  
-     A tree network topology with depth of 2 and fanout of 8 is built and connected to the remote controller running at 127.0.0.1. The topology built is displayed 
-  
-  * #### Information about all nodes (Optional)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-     To find all the Properties of Nodes and Switches , Go to Terminal 2 and run   
-   
-     ```mininet > dump ```
+### `npm run eject`
 
-     All the Information will be displayed
-   
-  * #### Testing Connectivity (Optional)
-  
-     From Terminal 2  run
-   
-     ``` mininet > xterm h1```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-     An another terminal lets say Terminal 3 is opened for *node h1* , Now run 
-   
-     ```# ping 10.0.0.2 -c 4``` 
-   
-     This shows the data of packet if connected successfully.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-  #### Step 2: Integrating the Utilities in the Controller
-  * From Terminal 2 run
-  
-    ``` mininet > xterm h1```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-    Another terminal pops up lets say Terminal 3 is opened for *node h1* , Now run
-  
-    ```# python3 traffic.py -s 4 -e 65```
-  
-    This will produce the required traffic data into the network
-  
-  * From Terminal 2 open another *node h2*,
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-    ```mininet > xterm h2```
-  
-    Another terminal pops up lets say Terminal 4 is opened for *node h2* , Now run
+## Learn More
 
-    ```# python3 attack.py 10.0.0.6```
-  
-    This will run an attack on the Node 10.0.0.6
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-  * From Terminal 2 open another *node h3*,
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-    ```mininet > xterm h3```
-  
-    Another terminal pops up lets say Terminal 5 is opened for *node h3* , Now run
+### Code Splitting
 
-    ```# python3 flooding.py```
-  
-    This will produce the flooding packets into the network.
-  
-  * Upon starting each traffic, the resulting entropy calculation and classifier outputs can be found in Terminal 1. 
-  * The traffic can be ended by pressing **Ctrl + Z** in their respective terminal
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
